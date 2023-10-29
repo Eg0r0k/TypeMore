@@ -1,0 +1,24 @@
+.header
+{
+    &__container
+    {
+        display: flex;
+      align-items: center;
+    }
+    &__nav 
+    {
+      
+    }
+} 
+.nav 
+{
+    &__menu 
+    {
+        display: flex;
+        font-size: 20px;
+    }
+    &__list 
+    {
+        padding: 7px;
+    }
+}

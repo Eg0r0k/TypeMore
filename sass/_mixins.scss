@@ -1,0 +1,37 @@
+// Миксин контейнера  ============================================================================================================================================================
+@mixin container() {
+    max-width: #{$maxWidthContainer - $containerPadding * 2}px;
+    padding: 0 #{$containerPadding}px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+// Миксин кнопок ================================================================================================================================================================
+@mixin button($bg-Color, $text-color, $radius: null) {
+    background-color: $bg-Color;
+    color: $text-color;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      
+    }
+    &:active {
+        background-color: $text-color;
+        color: $bg-Color;
+        transform: scale(0.9);
+    }
+    @if ($radius) {
+        border-radius: $radius;
+    }
+}
+// Миксин обводки =================================================================================================================================================================
+@mixin border($border-deph, $style: solid, $border-color, $direction: null, $radius: null) {
+    @if ($direction == "full") {
+        border: $border-deph $style $border-color;
+    } @else {
+        border-#{$direction}: $border-deph $style $border-color;
+    }
+    @if ($radius) {
+        border-radius: $radius;
+    }
+}
