@@ -8,7 +8,7 @@
 
 @import "./mixins";
 
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap');
 
 //Основные цвета ========================================================================================================================================================================
 
@@ -24,7 +24,7 @@ $secondTextColor: rgb(0, 0, 0);
 // Импортированный шрифт (здесь должна быть ссылка на шрифт)
 
 // Шрифт по умолчанию
-$fontFamily: "Russo One";
+$fontFamily: "Montserrat";
 
 // Минимальная ширина страницы
 $minWidth: 320;
@@ -53,6 +53,7 @@ body {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.555);
     color:white;
+  
 }
 html 
 {
@@ -75,7 +76,8 @@ html
 }
 @import "./header";
 
-.leaderBordMenu {
+.menu
+{
     position: fixed;
     top: 0;
     width: 100%;
@@ -87,8 +89,54 @@ html
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease; /* Добавляем transition */
-    // ... (остальной код)
+}
+.settingsMenu
+{
+    &__border {
+        max-width: 95%;
+        width: 40%;
+        height: 96%;
+        background-color: $primaryColor;
+        border-radius: 7px;
+        padding: 12px 20px;
+    }
+    &__open {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.set 
+{
+    margin-top: 40px;
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    gap: 40px;
+    &__item
+    {
+        display:flex;
+        min-width: 100px;
+        flex-direction: column;
+    }
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.leaderBordMenu {
+    
+    
     &__border {
         max-width: 95%;
         width: 100%;
@@ -105,4 +153,16 @@ html
     }
 }
 
-
+.TypeMore
+{
+    width: 100%;
+    background-color:red;
+    height: 300px;
+    &__container
+    {
+        display:flex;
+        flex-wrap: wrap;
+        word-wrap: break-all    ;
+        gap: 8px;
+    }
+}

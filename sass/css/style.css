@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -364,7 +364,7 @@ template {
 
 body {
   font-weight: 500;
-  font-family: "Russo One";
+  font-family: "Montserrat";
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.555);
@@ -403,7 +403,7 @@ html {
   padding: 7px;
 }
 
-.leaderBordMenu {
+.menu {
   position: fixed;
   top: 0;
   width: 100%;
@@ -416,6 +416,33 @@ html {
   visibility: hidden;
   transition: opacity 0.4s ease, visibility 0.4s ease; /* Добавляем transition */
 }
+
+.settingsMenu__border {
+  max-width: 95%;
+  width: 40%;
+  height: 96%;
+  background-color: rgb(50, 52, 55);
+  border-radius: 7px;
+  padding: 12px 20px;
+}
+.settingsMenu__open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.set {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.set__item {
+  display: flex;
+  min-width: 100px;
+  flex-direction: column;
+}
+
 .leaderBordMenu__border {
   max-width: 95%;
   width: 100%;
@@ -426,4 +453,16 @@ html {
 .leaderBordMenu__open {
   opacity: 1;
   visibility: visible;
+}
+
+.TypeMore {
+  width: 100%;
+  background-color: red;
+  height: 300px;
+}
+.TypeMore__container {
+  display: flex;
+  flex-wrap: wrap;
+  word-wrap: break-all;
+  gap: 8px;
 }
