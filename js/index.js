@@ -1,11 +1,11 @@
 import { randomWords } from "./API.js"              //Подключение API случайных слов
 import { header } from "./header.js";                //Подключение Хедера 
+import { updateClasses, showNextWord, TypeContainer, inputElement, currentIndex } from "./quoteValidation.js";
 document.addEventListener("DOMContentLoaded",() =>          
 {
     const app = async ()=>                  //Создание ассинхронного приложения        
     {
 
-     
     
         let randList = async (length) => {                       //(Типа) рандомный список слов
             const randomAppWords = await randomWords(length);        
@@ -37,63 +37,28 @@ document.addEventListener("DOMContentLoaded",() =>
             return quoteList
         }
         
-        let resultQuote = await randList(60);       //Плдучаем результативный список слов 
-
-        const TypeContainer = document.querySelector(".TypeMore__container");           //Контейнер игры
-        const inputElement = document.getElementById("TypeMore__input");                //Импут игры (возможно временный)
-        let currentIndex = 0;
-        const updateClasses = () => {                                                  //При вводе в инпут обновляем классы букв и слов
-            const currentWord = TypeContainer.querySelector(".word.current");           
-            if (!currentWord) return;                   
-        
-            const letters = currentWord.querySelectorAll(".letter");
-        
-            letters.forEach((letter, index) => {
-                const inputValue = inputElement.value[index];
-                if (inputValue) {
-                    if (inputValue === letter.textContent) {
-                        letter.classList.remove("incorrect");
-                        letter.classList.add("correct");                    //Тут пока что очень много багов ;(
-                    } else {
-                        letter.classList.remove("correct");
-                        letter.classList.add("incorrect");
-                    }
-                } else {
-                    if (letter.classList.contains("overincorrect")) {
-                        letter.remove();
-                    } else {
-                        letter.classList.remove("correct", "incorrect");
-                    }
-                }
-            });
-        
-            if (inputElement.value.length > letters.length) {
-                for (let i = letters.length; i < inputElement.value.length && i < letters.length + 4; i++) {
-                    const letterElement = document.createElement("span"); 
-                    letterElement.classList.add("letter", "overincorrect");
-                    letterElement.textContent = inputElement.value[i];
-                    currentWord.appendChild(letterElement);
-                }
-            }
-        };
+        let resultQuote = await randList(2);           //Плдучаем результативный список слов 
         inputElement.addEventListener("input", () => {
-            if (currentIndex < resultQuote.length) {
+            if (currentIndex <= resultQuote.length) {
                 updateClasses();
+                let countCorrectLetter = updateClasses()
+                let countAllLetters = document.querySelectorAll(".letter").length
+                console.log(countCorrectLetter/countAllLetters * 100)
+                let allWordsCorrect = [...document.querySelectorAll(".word")].every(word => {
+                    return [...word.querySelectorAll(".letter")].every(letter => letter.classList.contains("correct"));
+                });
+        
+                if (allWordsCorrect) {
+                    console.log("Тест");
+                }
             }
         });
 
-        const showNextWord = () => {                                            //Отображение текущего слова (присваивание класса текущего)
-            const words = TypeContainer.querySelectorAll(".word");
-            if (currentIndex < words.length) {
-                words[currentIndex].classList.add("current");
-                currentIndex++;
-            }
-        };
+        showNextWord();
+        
+ 
+     
 
-        showNextWord();    //запуск функции
-
-
-    
         header() //запуск функции
     } 
     app() //запуск функции

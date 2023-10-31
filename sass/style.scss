@@ -123,9 +123,36 @@ html
 
 
 
+.letter.next {
+    position: relative;
+    transition: all 0.2s ease-in;
+   &::before
+   {
+    transition: all 0.2s ease-in;
+    position: absolute;
+    content:"";
+    width: 2px;
+    height: 25px;
 
+    bottom: 0;
+    right:-1px;
+    background-color:rgb(157, 115, 255);
+    animation: slide 0.5s infinite alternate;
+   }
+}
 
-
+.correct
+{
+    color:green;
+}
+.incorrect
+{
+    color:red;
+}
+.overincorrect
+{
+    color:rgb(128, 4, 4);
+}
 
 
 
@@ -156,7 +183,7 @@ html
 .TypeMore
 {
     width: 100%;
-    background-color:red;
+    background-color:rgb(39, 39, 39);
     height: 300px;
     &__container
     {
@@ -164,5 +191,14 @@ html
         flex-wrap: wrap;
         word-wrap: break-all    ;
         gap: 8px;
+        font-size: 20px;
     }
 }
+@keyframes slide {
+    from {
+      opacity: 1;
+    }
+    to {
+     opacity: 0;
+    }
+  }
