@@ -53,11 +53,11 @@ export const updateClasses = () => {
     if (previousNextLetter) {
         previousNextLetter.classList.remove("next");
     }
-
+    
     if (nextLetter) {
         nextLetter.classList.add("next");
     }
-
+    
     // Проверяем, если все буквы имеют класс "correct"
     const allCorrect = [...letters].every(letter => letter.classList.contains("correct"));
    
@@ -70,9 +70,20 @@ export const updateClasses = () => {
 
 export const showNextWord = () => {
 
-  
+    //=========================================================================Change=====================================================
     const words = TypeContainer.querySelectorAll(".word");
-    if (currentIndex < words.length) {
+     
+    let allWordsCorrect = [...document.querySelectorAll(".word")].every(word => {
+        return [...word.querySelectorAll(".letter")].every(letter => letter.classList.contains("correct"));
+    }); 
+
+    if (allWordsCorrect) {
+      inputElement.disabled = true;
+    }
+    //=====================================================================================================================================
+
+
+    if (currentIndex <= words.length) {
       
        
         // Убираем класс "current" с предыдущего слова (если оно есть)
@@ -85,5 +96,6 @@ export const showNextWord = () => {
         words[currentIndex].classList.add("current");
         currentIndex++;
     }
+    
             //Доделать 
 };
